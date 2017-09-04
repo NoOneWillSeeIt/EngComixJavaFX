@@ -9,19 +9,49 @@
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.vk.api/sdk -->
+        <!-- VK API -->
         <dependency>
             <groupId>com.vk.api</groupId>
             <artifactId>sdk</artifactId>
             <version>0.5.8</version>
         </dependency>
+        <!-- slf4j на фреймворке log4j для логгирования -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.8.0-alpha2</version>
+        </dependency>
+        <!-- доп. зависимости для логгирования, для vk api -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.7</version>
+        </dependency>
     </dependencies>
     <build>
         <resources>
+            <!-- закидываем *.fxml в папку resources -->
             <resource>
+                <targetPath>resources</targetPath>
                 <filtering>false</filtering>
-                <directory>${basedir}/src/main/java/sample</directory>
+                <directory>src/main/java/Project</directory>
                 <includes>
                     <include>*.fxml</include>
+                </includes>
+            </resource>
+            <!-- закидываем конфиг log4j2 в resources-->
+            <resource>
+                <targetPath>resources</targetPath>
+                <filtering>false</filtering>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>log4j2.xml</include>
                 </includes>
             </resource>
         </resources>
